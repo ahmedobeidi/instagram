@@ -1,0 +1,15 @@
+{
+  "name": "instagram",
+  "version": "1.0.0",
+  "main": "index.php",
+  "scripts": {
+  "build:css": "tailwindcss build -i ./frontend/css/style.css -o ./frontend/css/output.css --watch"
+},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "tailwindcss": "^3.4.16"
+  }
+}
