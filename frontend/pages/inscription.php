@@ -18,6 +18,7 @@
     } 
     ?>
 
+
     <main class="flex flex-col gap-10 h-[100vh] justify-center items-center">
         <section class="flex flex-col gap-10 items-center w-[90%]">
             <img src="../../assets/logo.png" alt="Logo">
@@ -32,6 +33,8 @@
             <h3 class="text-dark-gray">Already have an account? <a href="./connection.php" class="text-dark-blue">Login</a></h3>
         </section>
     </main>
+
+
 
 </body>
 </html>
