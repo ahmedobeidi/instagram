@@ -16,8 +16,9 @@ module.exports = {
       'off-white': '#fafafa',
       'off-gray': '#f2f2f2',
       'off-blue': '#9bcbf7',
+      'off-red': '#ec0000',
       'dark-gray': '#ABA5A5',
-      'dark-blue': '#3797ef'
+      'dark-blue': '#3797ef',
     }
   },
   plugins: [],

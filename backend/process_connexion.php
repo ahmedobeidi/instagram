@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (empty($username) || empty($password)) {
             $_SESSION["mdp"] = "Erreur : Tous les champs sont obligatoires.";
-            header("Location: ../..//frontend/pages/connexion.php");
+            header("Location: ../../frontend/pages/connexion.php");
             exit;
         }
 
@@ -33,12 +33,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             } else {
                 
                 $_SESSION["mdp"] = "Nom d'utilisateur ou mot de passe incorrect.";
-                header("Location: ../..//frontend/pages/connexion.php");
+                header("Location: ../frontend/pages/connexion.php");
                 exit;
             }
         } catch (PDOException $error) {
             $_SESSION["mdp"] = "Erreur lors de la requête : " . $error->getMessage();
-            header("Location: ../..//frontend/pages/connexion.php");
+            header("Location: ../../frontend/pages/connexion.php");
             exit;
         }
     }
