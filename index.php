@@ -1,3 +1,7 @@
+<?php 
+    require_once './db/connect_db.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +11,6 @@
     <link rel="stylesheet" href="./frontend/css/output.css">
 </head>
 <body>
-    <h1 class="text-red-700">HHHH</h1>
+    <h2 class="text-red-500">sdfsdf</h2>
 </body>
 </html>
