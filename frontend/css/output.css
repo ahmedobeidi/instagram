@@ -613,6 +613,10 @@ video {
   padding-right: 0.75rem;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .font-SF {
   font-family: SF-Pro-Text;
 }
@@ -629,6 +633,11 @@ video {
 .text-dark-gray {
   --tw-text-opacity: 1;
   color: rgb(171 165 165 / var(--tw-text-opacity, 1));
+}
+
+.text-off-red {
+  --tw-text-opacity: 1;
+  color: rgb(236 0 0 / var(--tw-text-opacity, 1));
 }
 
 .text-off-white {
