@@ -26,6 +26,7 @@
 <form action="../..//backend/process_inscription.php" method="post" >
 
 <div>
+    <h1>inscription</h1>
             <label for="nom">Nom :</label><br>
             <input type="text" name="nom" id="nom" placeholder="Entrez votre nom" value="" autocomplete="off"  required>
         </div>
