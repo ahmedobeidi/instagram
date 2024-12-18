@@ -554,6 +554,31 @@ video {
   display: none;
 }
 
+.h-32 {
+  height: 8rem;
+}
+
+.w-\[30px\] {
+  width: 30px;
+}
+
+.w-\[90\%\] {
+  width: 90%;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1));
+}
+
 .text-red-700 {
   --tw-text-opacity: 1;
   color: rgb(185 28 28 / var(--tw-text-opacity, 1));
