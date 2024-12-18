@@ -7,7 +7,7 @@
    
 </head>
 <body>
-    <form action="../..//backend/process_connexion.php" method="post">
+    <form action="../../backend/process_connexion.php" method="post">
         <div>
             <h1>Se connecter</h1>
             <?php

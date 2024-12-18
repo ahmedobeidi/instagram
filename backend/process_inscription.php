@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ':password' => $hashedPassword
             ]);
 
-            header("Location: ../..//frontend/pages/connexion.php");
+            header("Location: ../../index.php");
             exit;
 
         } catch (PDOException $error) {

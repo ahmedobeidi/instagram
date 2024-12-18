@@ -30,7 +30,7 @@
         </section>
         <section class="flex flex-col items-center">
             <h2 class="text-dark-gray">OR</h2>
-            <h3 class="text-dark-gray">Already have an account? <a href="./connection.php" class="text-dark-blue">Login</a></h3>
+            <h3 class="text-dark-gray">Already have an account? <a href="./connexion.php" class="text-dark-blue">Login</a></h3>
         </section>
     </main>
 

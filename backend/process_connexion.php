@@ -43,6 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 } else {
-    header("Location: ../..//frontend/pages/connexion.php");
+    header("Location: ../../frontend/pages/connexion.php");
     exit;
 }
