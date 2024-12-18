@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once '../../db/connect_db.php';
+require_once '../db/connect_db.php';
 
 if (isset($_POST['photo_id'])) {
     $user_id = $_SESSION['user_id'];
