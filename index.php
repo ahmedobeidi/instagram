@@ -48,7 +48,7 @@ try {
                 <a href="" class="text-gray-700 hover:text-blue-600">Accueil</a>
                 <a href="./frontend/pages/connexion.php" class="text-gray-700 hover:text-blue-600">Connexion</a>
                 <a href="./frontend/pages/inscription.php" class="text-gray-700 hover:text-blue-600">S'inscrire</a>
-                <a href="./frontend/pages/profil.php?id=<?= htmlspecialchars($user) ?>" class="text-gray-700 hover:text-blue-600">Profil </a>
+                <a href="./frontend/pages/profil.php?id=<?= $user_id = $_SESSION['user_id']; ?>" class="text-gray-700 hover:text-blue-600">Profil </a>
             </div>
         </div>
     </nav>
