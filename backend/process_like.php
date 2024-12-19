@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['photo_id'])) {
         }
 
         
-        header('Location: ../index.php');
+        header('Location: ../frontend/pages/profil.php');
         exit;
 
     } catch (PDOException $erreur) {
