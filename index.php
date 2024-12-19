@@ -3,7 +3,7 @@ require_once './db/connect_db.php';
 session_start();
 
 if (!isset($_SESSION["user"])) {
-    header("Location: ../../frontend/pages/connexion.php");
+    header("Location: ./frontend/pages/connexion.php");
     exit;
 } else {
     $user = $_SESSION["user"];
