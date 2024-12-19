@@ -80,14 +80,7 @@ try {
                         <div class="w-[375px] p-4 lg:w-full">
                             <div class="w-full lg:flex lg:flex-row lg:flex-wrap lg:gap-4">
                                 <?php foreach ($photo as $image): ?>
-                                    <?php
-                                    // Récupérer le nombre de likes pour chaque photo
-                                    $sql_like_count = "SELECT COUNT(*) AS likes_count FROM liker WHERE photo_id = :photo_id";
-                                    $stmt_like_count = $pdo->prepare($sql_like_count);
-                                    $stmt_like_count->bindParam(':photo_id', $image['id'], PDO::PARAM_INT);
-                                    $stmt_like_count->execute();
-                                    $like_count = $stmt_like_count->fetch(PDO::FETCH_ASSOC);
-                                    ?>
+                                   
                                     <div div class="flex flex-col mb-4 bg-off-gray lg:w-[32%] shadow-xl">
                                         <img src="<?= "../" . $image['photo_url'] ?>" alt="Publication" class="w-full h-full object-cover rounded-t-lg">
                                         <p class="text-center text-sm mt-2 text-gray-800 bg-white bg-opacity-80"><?= htmlspecialchars($image['texteimage']) ?></p>
@@ -96,9 +89,9 @@ try {
                                         <div class="flex items-center justify-center space-x-4 bg-white bg-opacity-90 mt-2">
                                             <form action="../../backend/process_like.php" method="POST" id="like-form-<?= $image['id'] ?>">
                                                 <input type="hidden" name="photo_id" value="<?= $image['id'] ?>">
-                                                <input type="submit" name="like" value="Aimer" class="text-dark-green text-sm font-semibold transition duration-200 cursor-pointer">
+                                               
                                             </form>
-                                            <p class="text-center text-sm"><?= $like_count['likes_count'] ?> J'aime</p>
+                                          
                                         </div>
 
                                         <!-- Bouton Supprimer -->
