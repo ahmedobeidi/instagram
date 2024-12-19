@@ -45,7 +45,7 @@ try {
                 <a href="#">Instagram</a>
             </div>
             <div class="space-x-6">
-                <a href="#" class="text-gray-700 hover:text-blue-600">Accueil</a>
+                <a href="" class="text-gray-700 hover:text-blue-600">Accueil</a>
                 <a href="./frontend/pages/connexion.php" class="text-gray-700 hover:text-blue-600">Connexion</a>
                 <a href="./frontend/pages/inscription.php" class="text-gray-700 hover:text-blue-600">S'inscrire</a>
             </div>
