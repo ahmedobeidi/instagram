@@ -26,7 +26,7 @@
         </section>
         <section class="flex flex-col items-center">
             <h2 class="text-dark-gray">OR</h2>
-            <h3 class="text-dark-gray">Don't have an account? <a href="./inscription.php" class="text-dark-blue">Singup</a></h3>
+            <h3 class="text-dark-gray">Don't have an account? <a href="./inscription.php" class="text-dark-blue">Signup</a></h3>
         </section>
     </main>
 
