@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         if (empty($username) || empty($password)) {
             $_SESSION["erreur"] = "Erreur : Tous les champs sont obligatoires.";
-            header("Location: ../../frontend/pages/inscription.php");
+            header("Location: ../..//frontend/pages/inscription.php");
             exit;
         }
 
@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($stmt->rowCount() > 0) {
                 
                 $_SESSION["erreur"] = "Erreur : Le pseudo '$username' est déjà pris.";
-                header("Location: ../frontend/pages/inscription.php");
+                header("Location: ../..//frontend/pages/inscription.php");
                 exit;
             }
 
@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ':password' => $hashedPassword
             ]);
 
-            header("Location: ../index.php");
+            header("Location: ../../index.php");
             exit;
 
         } catch (PDOException $error) {

@@ -1,43 +1,86 @@
 <?php
 session_start();
+require_once '../db/connect_db.php'; 
 
-require_once '../db/connect_db.php';
 
-if (isset($_POST['photo_id'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['user_id']) && isset($_FILES['photo'])) {
+
+    $user_id = $_POST['user_id'];
+    $texteimage = $_POST['texteimage'];
+    $photo = $_FILES['photo'];
+
+    
+    if ($photo['error'] === UPLOAD_ERR_OK) {
+       
+        $uploadDir = '../assets/';
+        $fileName = uniqid() . basename($photo['name']);
+        $uploadPath = $uploadDir . $fileName;
+
+      
+        if (move_uploaded_file($photo['tmp_name'], $uploadPath)) {
+            $url_photo = $uploadPath;
+
+            
+            try {
+                $sql = "INSERT INTO photo (user_id, photo_url, texteimage) VALUES (:user_id, :photo_url, :texteimage)";
+                $stmt = $pdo->prepare($sql);
+                $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+                $stmt->bindParam(':photo_url', $url_photo, PDO::PARAM_STR);
+                $stmt->bindParam(':texteimage', $texteimage, PDO::PARAM_STR);
+
+                if ($stmt->execute()) {
+                    echo "Image ajoutée avec succès.";
+                } else {
+                    echo "Erreur lors de l'ajout de l'image.";
+                }
+            } catch (PDOException $e) {
+                echo "Erreur de base de données : " . $e->getMessage();
+            }
+        } else {
+            echo "Erreur lors du téléchargement de l'image.";
+        }
+    } else {
+        echo "Erreur d'upload d'image.";
+    }
+}
+
+// Supprimer une image
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete']) && isset($_POST['photo_id'])) {
+
     $user_id = $_SESSION['user_id'];
     $photo_id = $_POST['photo_id'];
 
-    // Vérifier si l'utilisateur a déjà liké la photo
-    $check_sql = "SELECT * FROM liker WHERE user_id = :user_id AND photo_id = :photo_id";
-    $stmt = $pdo->prepare($check_sql);
-    $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-    $stmt->bindParam(':photo_id', $photo_id, PDO::PARAM_INT);
-    $stmt->execute();
-
-    if ($stmt->rowCount() === 0) {
-        // L'utilisateur n'a pas encore liké, donc on enregistre un like
-        $insert_sql = "INSERT INTO liker (user_id, photo_id) VALUES (:user_id, :photo_id)";
-        $stmt = $pdo->prepare($insert_sql);
-        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-        $stmt->bindParam(':photo_id', $photo_id, PDO::PARAM_INT);
-        $stmt->execute();
-
-        // Enregistrer dans la session que l'utilisateur a aimé la photo
-        $_SESSION['like_status_' . $photo_id] = 'liked';
-    } else {
-        // L'utilisateur a déjà liké, on retire le like
-        $delete_sql = "DELETE FROM liker WHERE user_id = :user_id AND photo_id = :photo_id";
-        $stmt = $pdo->prepare($delete_sql);
-        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-        $stmt->bindParam(':photo_id', $photo_id, PDO::PARAM_INT);
-        $stmt->execute();
-
+    try {
         
-        $_SESSION['like_status_' . $photo_id] = 'disliked';
-    }
+        $sql = "SELECT photo_url FROM photo WHERE id = :photo_id AND user_id = :user_id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':photo_id', $photo_id, PDO::PARAM_INT);
+        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $photo = $stmt->fetch(PDO::FETCH_ASSOC);
 
-   
-    header("Location: " . $_SERVER['HTTP_REFERER']);
-    exit;
+        if ($photo) {
+            
+            $file_path = $photo['photo_url'];
+            if (file_exists($file_path)) {
+                unlink($file_path);  
+            }
+
+          
+            $delete_sql = "DELETE FROM photo WHERE id = :photo_id AND user_id = :user_id";
+            $stmt = $pdo->prepare($delete_sql);
+            $stmt->bindParam(':photo_id', $photo_id, PDO::PARAM_INT);
+            $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+            $stmt->execute();
+
+          
+            echo "Image supprimée avec succès.";
+        } else {
+            echo "Photo introuvable ou vous n'avez pas l'autorisation de la supprimer.";
+        }
+
+    } catch (PDOException $erreur) {
+        echo "Erreur : " . $erreur->getMessage();
+    }
 }
 ?>
