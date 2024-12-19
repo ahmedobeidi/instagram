@@ -27,26 +27,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['photo_id'])) {
             $stmt->bindParam(':photo_id', $photo_id, PDO::PARAM_INT);
             $stmt->execute();
 
-            // Met à jour l'état dans la session pour cette photo
-            $_SESSION['like_status_' . $photo_id] = 'liked';
+            // Incrémenter le compteur de likes
+            $sql_increment_like = "UPDATE photo SET likes_count = likes_count + 1 WHERE id = :photo_id";
+            $stmt_increment = $pdo->prepare($sql_increment_like);
+            $stmt_increment->bindParam(':photo_id', $photo_id, PDO::PARAM_INT);
+            $stmt_increment->execute();
         } else {
-            // Supprimer le like
+            
             $delete_sql = "DELETE FROM liker WHERE user_id = :user_id AND photo_id = :photo_id";
             $stmt = $pdo->prepare($delete_sql);
             $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
             $stmt->bindParam(':photo_id', $photo_id, PDO::PARAM_INT);
             $stmt->execute();
 
-            // Met à jour l'état dans la session pour cette photo
-            $_SESSION['like_status_' . $photo_id] = 'disliked';
+            // Décrémenter le compteur de likes
+            $sql_decrement_like = "UPDATE photo SET likes_count = likes_count - 1 WHERE id = :photo_id";
+            $stmt_decrement = $pdo->prepare($sql_decrement_like);
+            $stmt_decrement->bindParam(':photo_id', $photo_id, PDO::PARAM_INT);
+            $stmt_decrement->execute();
         }
 
-        // Redirige vers la page d'origine après traitement
-        header("Location: " . $_SERVER['HTTP_REFERER']);
+        
+        header('Location: ../frontend/pages/profil.php');
         exit;
 
-    } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
+    } catch (PDOException $erreur) {
+        echo "Error: " . $erreur->getMessage();
         exit;
     }
 }
