@@ -43,6 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['user_id']) && isset($
         echo "Erreur d'upload d'image.";
     }
 }
+  
+header('Location: ../frontend/pages/profil.php');
 
 // Supprimer une image
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete']) && isset($_POST['photo_id'])) {
@@ -78,6 +80,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete']) && isset($_
         } else {
             echo "Photo introuvable ou vous n'avez pas l'autorisation de la supprimer.";
         }
+        header('Location: ../frontend/pages/profil.php');
+exit;
 
     } catch (PDOException $erreur) {
         echo "Erreur : " . $erreur->getMessage();
