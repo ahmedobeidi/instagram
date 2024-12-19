@@ -2,11 +2,17 @@
 require_once '../../db/connect_db.php';
 session_start();
 
-if (isset($_SESSION["user"])) {
-    $user = $_SESSION["user"];
+
+if (!isset($_SESSION["user"])) {
+    
+    header("Location: ../../frontend/pages/connexion.php");
+    exit;
 } else {
-    header("Location: ../index.php ");
+    
+    $user = $_SESSION["user"];
 }
+
+
 
 $sql = "SELECT photo_url, texteimage, id FROM photo WHERE user_id = :user_id;";
 try {
@@ -51,6 +57,11 @@ try {
                 <div>
                     <span class="font-semibold">180</span> abonnements
                 </div>
+                <div>
+                    
+                <a href="../../frontend/pages/connexion.php" class="text-black font-first-font font-extrabold"> Deconnexion</a>
+              
+            </div>
             </div>
             <p class="mt-4 text-gray-600">Ceci est la biographie de l'utilisateur. Partagez quelque chose d'intéressant sur vous ici !</p>
         </div>

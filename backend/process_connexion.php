@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
                 $_SESSION['user'] = $user['username'];
                 $_SESSION["user_id"] = $user["id"];
-                header("Location:../frontend/pages/profil.php");
+                header("Location: ../frontend/pages/profil.php");
                 exit;
             } else {
                 
