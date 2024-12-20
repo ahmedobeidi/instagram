@@ -22,8 +22,6 @@ try {
     exit;
 }
 
-
-
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +31,7 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instagram - Accueil</title>
-    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <script src="https://cdn.tailwindcss.com"></script>
      <link rel="stylesheet" href="./frontend/css/output.css">
 </head>
 
@@ -47,8 +45,6 @@ try {
             </div>
             <div class="space-x-6">
                 <a href="" class="text-gray-700 hover:text-blue-600">Accueil</a>
-                <a href="./frontend/pages/connexion.php" class="text-gray-700 hover:text-blue-600">Connexion</a>
-                <a href="./frontend/pages/inscription.php" class="text-gray-700 hover:text-blue-600">S'inscrire</a>
                 <a href="./frontend/pages/profil.php?id=<?= $user_id = $_SESSION['user_id']; ?>" class="text-gray-700 hover:text-blue-600">Profil </a>
             </div>
         </div>
@@ -87,7 +83,7 @@ try {
                             <form action="./backend/process_like.php" method="POST" id="like-form-<?= $image['id'] ?>">
                                 <input type="hidden" name="photo_id" value="<?= $image['id'] ?>">
                                 <input type="submit" name="like" value="Aimer" 
-                                       class="text-red-600 hover:text-red-800 text-sm font-semibold transition duration-200">
+                                       class="text-dark-green cursor-pointer	 text-sm font-semibold transition duration-200">
                             </form>
                             <span class="text-gray-600"><?= $like_count['likes_count'] ?> J'aime</span>
                         </div>

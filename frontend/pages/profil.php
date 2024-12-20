@@ -8,12 +8,34 @@ if (isset($_SESSION["user"])) {
     header("Location: ../../index.php ");
 }
 
+
+if (isset($_GET["id"])){
+    $iduser = $_GET["id"];
+}else{
+    $iduser = $_SESSION["user_id"];
+    $user = $_SESSION["user"];
+}
+
+
+
 $sql = "SELECT photo_url, texteimage, id FROM photo WHERE user_id = :user_id;";
 try {
     $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':user_id', $_SESSION["user_id"], PDO::PARAM_STR);
+    $stmt->bindParam(':user_id', $iduser, PDO::PARAM_STR);
     $stmt->execute();
     $photo = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $error) {
+    echo $error->getMessage();
+    exit;
+}
+
+
+$sql = "SELECT username FROM user WHERE id = :user_id;";
+try {
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':user_id', $iduser, PDO::PARAM_STR);
+    $stmt->execute();
+    $usernames = $stmt->fetch(PDO::FETCH_ASSOC);
 } catch (PDOException $error) {
     echo $error->getMessage();
     exit;
@@ -69,7 +91,7 @@ try {
                         </div>
                     </div>
 
-                    <p class="text-center font-semibold text-lg lg:text-[23px]"><?= $user ?></p>
+                    <p class="text-center font-semibold text-lg lg:text-[23px]"><?= $usernames["username"] ?></p>
                     <p class="text-center text-gray-600">Designer</p>
 
                     <div class="flex flex-col mt-6 lg:w-[80vw]">
@@ -81,7 +103,7 @@ try {
                             <div class="w-full lg:flex lg:flex-row lg:flex-wrap lg:gap-4">
                                 <?php foreach ($photo as $image): ?>
                                    
-                                    <div div class="flex flex-col mb-4 bg-off-gray lg:w-[32%] shadow-xl">
+                                    <div div class="flex flex-col mb-4 bg-off-gray lg:w-[22%] shadow-xl">
                                         <img src="<?= "../" . $image['photo_url'] ?>" alt="Publication" class="w-full h-full object-cover rounded-t-lg">
                                         <p class="text-center text-sm mt-2 text-gray-800 bg-white bg-opacity-80"><?= htmlspecialchars($image['texteimage']) ?></p>
 
