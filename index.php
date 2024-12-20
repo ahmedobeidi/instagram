@@ -45,9 +45,12 @@ try {
                 <a href=""><img src="./assets/logo.png" alt="Logo"></a>
             </div>>
             <form action="./backend/process_searchbar.php" method="get">
-                <input type="text" name="query" placeholder="Rechercher...">
-                <button type="submit">Rechercher</button>
-            </form>
+    <input type="text" name="query" placeholder="Rechercher...">
+    <button type="submit">Rechercher</button>
+    
+</form>
+
+
             <div class="space-x-6">
                 
                 <a href="" class="text-gray-700 hover:text-blue-600">Accueil</a>
