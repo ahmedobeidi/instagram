@@ -33,7 +33,8 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instagram - Accueil</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+     <link rel="stylesheet" href="./frontend/css/output.css">
 </head>
 
 <body class="bg-gray-100">
@@ -41,8 +42,8 @@ try {
     <!-- Navbar -->
     <nav class="bg-white shadow-md py-4">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <div class="text-3xl font-bold text-blue-600">
-                <a href="">Instagram</a>
+            <div class="w-[150px]">
+                <a href=""><img src="./assets/logo.png" alt="Logo"></a>
             </div>
             <div class="space-x-6">
                 <a href="" class="text-gray-700 hover:text-blue-600">Accueil</a>
@@ -97,11 +98,11 @@ try {
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white mt-12">
-        <div class="max-w-7xl mx-auto px-6 py-4 text-center">
-            <p>&copy; 2024 Instagram Clone. Tous droits réservés.</p>
-        </div>
-    </footer>
+    <!-- <footer class="bg-gray-800 text-white mt-12"> -->
+        <!-- <div class="max-w-7xl mx-auto px-6 py-4 text-center"> -->
+            <!-- <p>&copy; 2024 Instagram Clone. Tous droits réservés.</p> -->
+        <!-- </div> -->
+    <!-- </footer> -->
 
 </body>
 

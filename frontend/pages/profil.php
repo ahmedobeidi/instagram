@@ -5,7 +5,7 @@ session_start();
 if (isset($_SESSION["user"])) {
     $user = $_SESSION["user"];
 } else {
-    header("Location: ../index.php ");
+    header("Location: ../../index.php ");
 }
 
 $sql = "SELECT photo_url, texteimage, id FROM photo WHERE user_id = :user_id;";
