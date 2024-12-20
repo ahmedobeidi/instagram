@@ -63,7 +63,7 @@ try {
     <!-- sidenav -->
 
     <main class="lg:flex lg:flex-row">
-        
+
         <section class="lg:w-[20vw]">
             <div id="sidenav" class="fixed lg:h-[100vh] lg:w-[20vw] z-10 overflow-x-hidden flex flex-col px-8 py-10 gap-5 border-r-[2px] border-r-off-gray">
                 <a href=""><img src="../../assets/logo.png" alt="logo" class="w-[103px] h-[29px] mb-6"></a>
@@ -102,8 +102,8 @@ try {
                         <div class="w-[375px] p-4 lg:w-full">
                             <div class="w-full lg:flex lg:flex-row lg:flex-wrap lg:gap-4">
                                 <?php foreach ($photo as $image): ?>
-                                   
-                                    <div div class="flex flex-col mb-4 bg-off-gray lg:w-[22%] shadow-xl">
+
+                                    <div div class="flex flex-col mb-4 bg-off-gray lg:w-[32%] shadow-xl">
                                         <img src="<?= "../" . $image['photo_url'] ?>" alt="Publication" class="w-full h-full object-cover rounded-t-lg">
                                         <p class="text-center text-sm mt-2 text-gray-800 bg-white bg-opacity-80"><?= htmlspecialchars($image['texteimage']) ?></p>
 
@@ -111,9 +111,9 @@ try {
                                         <div class="flex items-center justify-center space-x-4 bg-white bg-opacity-90 mt-2">
                                             <form action="../../backend/process_like.php" method="POST" id="like-form-<?= $image['id'] ?>">
                                                 <input type="hidden" name="photo_id" value="<?= $image['id'] ?>">
-                                               
+
                                             </form>
-                                          
+
                                         </div>
 
                                         <!-- Bouton Supprimer -->
@@ -149,7 +149,7 @@ try {
                 </div>
             </div>
         </section>
-        
+
     </main>
 
 

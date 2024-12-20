@@ -22,6 +22,7 @@ try {
     exit;
 }
 
+
 ?>
 
 <!DOCTYPE html>
@@ -40,13 +41,23 @@ try {
     <!-- Navbar -->
     <nav class="bg-white shadow-md py-4">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <div class="w-[150px]">
-                <a href=""><img src="./assets/logo.png" alt="Logo"></a>
+            <div class="text-3xl font-bold text-blue-600">
+                <a href="">Instagram</a>
+                
             </div>
+            <form action="./backend/process_searchbar.php" method="post">
+    <input type="text" name="query" placeholder="Rechercher...">
+    <button type="submit">Rechercher</button>
+    
+</form>
+
+
             <div class="space-x-6">
+                
                 <a href="" class="text-gray-700 hover:text-blue-600">Accueil</a>
                 <a href="./frontend/pages/profil.php?id=<?= $user_id = $_SESSION['user_id']; ?>" class="text-gray-700 hover:text-blue-600">Profil </a>
             </div>
+            
         </div>
     </nav>
 
