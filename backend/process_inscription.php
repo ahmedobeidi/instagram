@@ -40,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ':password' => $hashedPassword
             ]);
 
+            $_SESSION["userexist"] = true;
             header("Location: ../index.php");
             exit;
 

@@ -2,12 +2,13 @@
 require_once './db/connect_db.php';
 session_start();
 
-if (!isset($_SESSION["user"])) {
+if (!isset($_SESSION["user"]) || !$_SESSION['userexist']) {
     header("Location: ./frontend/pages/connexion.php");
     exit;
 } else {
     $user = $_SESSION["user"];
 }
+
 
 
  $sql = "SELECT user.username,photo_url, texteimage, photo.id, user_id FROM photo
@@ -51,13 +52,17 @@ try {
 </form>
 
 
+
             <div class="space-x-6">
                 
                 <a href="" class="text-gray-700 hover:text-blue-600">Accueil</a>
                 <a href="./frontend/pages/profil.php?id=<?= $user_id = $_SESSION['user_id']; ?>" class="text-gray-700 hover:text-blue-600">Profil </a>
+                    <a href="./backend/process_deconnexion.php" class="">Deconnexion</a>
             </div>
             
         </div>
+
+        
     </nav>
 
     <!-- Section d'introduction -->

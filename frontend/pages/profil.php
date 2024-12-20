@@ -76,9 +76,9 @@ try {
                     <img src="../../assets/profile-icon.png" alt="" class="w-8 h-8">
                     <a href="" class="">Profile</a>
                 </div>
-                <div class="flex flex-row gap-3 items-center bg-off-gray">
+                <div class="flex flex-row gap-3 items-center">
                     <img src="../../assets/profile-icon.png" alt="" class="w-8 h-8">
-                    <a href="" class="">Deconnexion</a>
+                    <a href="../../backend/process_deconnexion.php" class="">Deconnexion</a>
                 </div>
             </div>
         </section>

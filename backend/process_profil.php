@@ -3,7 +3,7 @@ session_start();
 require_once '../db/connect_db.php'; 
 
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['user_id']) && isset($_FILES['photo'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['user_id']) && isset($_FILES['photo']) && $_SESSION["userexist"]) {
 
     $user_id = $_POST['user_id'];
     $texteimage = $_POST['texteimage'];
