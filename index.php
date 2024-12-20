@@ -43,6 +43,10 @@ try {
             <div class="w-[150px]">
                 <a href=""><img src="./assets/logo.png" alt="Logo"></a>
             </div>
+            <form action="./backend/process_searchbar.php" method="get">
+                <input type="text" name="query" placeholder="Rechercher...">
+                <button type="submit">Rechercher</button>
+            </form>
             <div class="space-x-6">
                 <a href="" class="text-gray-700 hover:text-blue-600">Accueil</a>
                 <a href="./frontend/pages/profil.php?id=<?= $user_id = $_SESSION['user_id']; ?>" class="text-gray-700 hover:text-blue-600">Profil </a>
