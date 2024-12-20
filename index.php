@@ -43,7 +43,7 @@ try {
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
             <div class="w-[150px]">
                 <a href=""><img src="./assets/logo.png" alt="Logo"></a>
-            </div>>
+            </div>
             <form action="./backend/process_searchbar.php" method="get">
     <input type="text" name="query" placeholder="Rechercher...">
     <button type="submit">Rechercher</button>
