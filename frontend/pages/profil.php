@@ -76,6 +76,10 @@ try {
                     <img src="../../assets/profile-icon.png" alt="" class="w-8 h-8">
                     <a href="" class="">Profile</a>
                 </div>
+                <div class="flex flex-row gap-3 items-center bg-off-gray">
+                    <img src="../../assets/profile-icon.png" alt="" class="w-8 h-8">
+                    <a href="" class="">Deconnexion</a>
+                </div>
             </div>
         </section>
 
