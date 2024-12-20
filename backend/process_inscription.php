@@ -11,6 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $password = trim($_POST['password']);
 
         
+
+        
         if (empty($username) || empty($password)) {
             $_SESSION["erreur"] = "Erreur : Tous les champs sont obligatoires.";
             header("Location: ../..//frontend/pages/inscription.php");
@@ -39,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ':username' => $username,
                 ':password' => $hashedPassword
             ]);
-
+            
             $_SESSION["userexist"] = true;
             header("Location: ../index.php");
             exit;
