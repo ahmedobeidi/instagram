@@ -18,12 +18,12 @@ if (isset($_GET['query'])) {
         // Affichage des résultats
         foreach ($result as $row) {
             
-            // echo "<div>";
-            // echo "<a href = '../frontend/pages/profil.php?id=" . $row["id"] . " '>Profil de : " . htmlspecialchars($row["username"]) . "</a>";
-            header("location: ../frontend/pages/profil.php?id=$row[id]");
+            echo "<div>";
+            echo "<a href = '../frontend/pages/profil.php?id=" . $row["id"] . " '>Profil de : " . htmlspecialchars($row["username"]) . "</a>";
+            
         }
     } else {
-        header('location: ../index.php');
+        echo "Aucun résultat trouvé";
     }
 }
 ?>

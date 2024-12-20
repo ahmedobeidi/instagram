@@ -76,10 +76,6 @@ try {
                     <img src="../../assets/profile-icon.png" alt="" class="w-8 h-8">
                     <a href="" class="">Profile</a>
                 </div>
-                <div class="flex flex-row gap-3 items-center">
-                    <img src="../../assets/profile-icon.png" alt="" class="w-8 h-8">
-                    <a href="../../backend/process_deconnexion.php" class="">Deconnexion</a>
-                </div>
             </div>
         </section>
 
@@ -106,7 +102,7 @@ try {
                         <div class="w-[375px] p-4 lg:w-full">
                             <div class="w-full lg:flex lg:flex-row lg:flex-wrap lg:gap-4">
                                 <?php foreach ($photo as $image): ?>
-
+                                   
                                     <div div class="flex flex-col mb-4 bg-off-gray lg:w-[32%] shadow-xl">
                                         <img src="<?= "../" . $image['photo_url'] ?>" alt="Publication" class="w-full h-full object-cover rounded-t-lg">
                                         <p class="text-center text-sm mt-2 text-gray-800 bg-white bg-opacity-80"><?= htmlspecialchars($image['texteimage']) ?></p>
