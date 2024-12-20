@@ -36,6 +36,7 @@ try {
     $stmt->bindParam(':user_id', $iduser, PDO::PARAM_STR);
     $stmt->execute();
     $usernames = $stmt->fetch(PDO::FETCH_ASSOC);
+
 } catch (PDOException $error) {
     echo $error->getMessage();
     exit;
@@ -76,7 +77,7 @@ try {
                     <img src="../../assets/profile-icon.png" alt="" class="w-8 h-8">
                     <a href="" class="">Profile</a>
                 </div>
-                <div class="flex flex-row gap-3 items-center">
+                <div class="flex flex-row gap-3 items-center bg-off-gray">
                     <img src="../../assets/profile-icon.png" alt="" class="w-8 h-8">
                     <a href="../../backend/process_deconnexion.php" class="">Deconnexion</a>
                 </div>
@@ -115,7 +116,6 @@ try {
                                         <div class="flex items-center justify-center space-x-4 bg-white bg-opacity-90 mt-2">
                                             <form action="../../backend/process_like.php" method="POST" id="like-form-<?= $image['id'] ?>">
                                                 <input type="hidden" name="photo_id" value="<?= $image['id'] ?>">
-
                                             </form>
 
                                         </div>

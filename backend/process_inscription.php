@@ -2,6 +2,8 @@
 session_start();
 require_once '../db/connect_db.php'; 
 
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     
@@ -13,9 +15,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         if (empty($username) || empty($password)) {
             $_SESSION["erreur"] = "Erreur : Tous les champs sont obligatoires.";
-            header("Location: ../..//frontend/pages/inscription.php");
+            header("Location: ../frontend/pages/inscription.php");
             exit;
         }
+
+     
 
         try {
             
@@ -27,9 +31,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($stmt->rowCount() > 0) {
                 
                 $_SESSION["erreur"] = "Erreur : Le pseudo '$username' est déjà pris.";
-                header("Location: ../../frontend/pages/inscription.php");
+                header("Location: ../frontend/pages/inscription.php");
                 exit;
             }
+
 
            
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
@@ -40,7 +45,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ':password' => $hashedPassword
             ]);
 
-            $_SESSION["userexist"] = true;
+            
+            $_SESSION["user"] = $username;
+            $_SESSION["user_id"] = $pdo->lastInsertId();
+            
             header("Location: ../index.php");
             exit;
 

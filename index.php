@@ -2,7 +2,7 @@
 require_once './db/connect_db.php';
 session_start();
 
-if (!isset($_SESSION["user"]) || !$_SESSION['userexist']) {
+if (!isset($_SESSION["user"])) {
     header("Location: ./frontend/pages/connexion.php");
     exit;
 } else {
@@ -10,8 +10,7 @@ if (!isset($_SESSION["user"]) || !$_SESSION['userexist']) {
 }
 
 
-
- $sql = "SELECT user.username,photo_url, texteimage, photo.id, user_id FROM photo
+$sql = "SELECT user.username,photo_url, texteimage, photo.id, user_id FROM photo
  INNER JOIN user WHERE user.id = photo.user_id
   ORDER BY id DESC;";
 try {
@@ -34,7 +33,7 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instagram - Accueil</title>
     <script src="https://cdn.tailwindcss.com"></script>
-     <link rel="stylesheet" href="./frontend/css/output.css">
+    <link rel="stylesheet" href="./frontend/css/output.css">
 </head>
 
 <body class="bg-gray-100">
@@ -46,23 +45,19 @@ try {
                 <a href=""><img src="./assets/logo.png" alt="Logo"></a>
             </div>
             <form action="./backend/process_searchbar.php" method="get">
-    <input type="text" name="query" placeholder="Rechercher...">
-    <button type="submit">Rechercher</button>
-    
-</form>
+                <input type="text" name="query" placeholder="Rechercher...">
+                <button type="submit">Rechercher</button>
 
+            </form>
 
 
             <div class="space-x-6">
-                
-                <a href="" class="text-gray-700 hover:text-blue-600">Accueil</a>
-                <a href="./frontend/pages/profil.php?id=<?= $user_id = $_SESSION['user_id']; ?>" class="text-gray-700 hover:text-blue-600">Profil </a>
-                    <a href="./backend/process_deconnexion.php" class="">Deconnexion</a>
-            </div>
-            
-        </div>
 
-        
+                <a href="" class="text-gray-700 hover:text-blue-600">Accueil</a>
+                <a href="./frontend/pages/profil.php" class="text-gray-700 hover:text-blue-600">Profil </a>
+            </div>
+
+        </div>
     </nav>
 
     <!-- Section d'introduction -->
@@ -77,17 +72,17 @@ try {
     <section class="mt-12">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             <?php foreach ($photos as $image):
-                
-                ?>
+
+            ?>
                 <?php
-                    // Récupérer le nombre de likes pour chaque photo
-                    $sql_like_count = "SELECT COUNT(*) AS likes_count FROM liker WHERE photo_id = :photo_id";
-                    $stmt_like_count = $pdo->prepare($sql_like_count);
-                    $stmt_like_count->bindParam(':photo_id', $image['id'], PDO::PARAM_INT);
-                    $stmt_like_count->execute();
-                    $like_count = $stmt_like_count->fetch(PDO::FETCH_ASSOC);
+                // Récupérer le nombre de likes pour chaque photo
+                $sql_like_count = "SELECT COUNT(*) AS likes_count FROM liker WHERE photo_id = :photo_id";
+                $stmt_like_count = $pdo->prepare($sql_like_count);
+                $stmt_like_count->bindParam(':photo_id', $image['id'], PDO::PARAM_INT);
+                $stmt_like_count->execute();
+                $like_count = $stmt_like_count->fetch(PDO::FETCH_ASSOC);
                 ?>
-                
+
                 <div class="bg-white rounded-lg overflow-hidden shadow-md">
                     <img src="<?= ".../" . $image['photo_url'] ?>" alt="Publication" class="w-full h-64 object-cover">
                     <div class="p-4">
@@ -97,8 +92,8 @@ try {
                         <div class="flex items-center mt-3 space-x-4">
                             <form action="./backend/process_like.php" method="POST" id="like-form-<?= $image['id'] ?>">
                                 <input type="hidden" name="photo_id" value="<?= $image['id'] ?>">
-                                <input type="submit" name="like" value="Aimer" 
-                                       class="text-dark-green cursor-pointer	 text-sm font-semibold transition duration-200">
+                                <input type="submit" name="like" value="Aimer"
+                                    class="text-dark-green cursor-pointer	 text-sm font-semibold transition duration-200">
                             </form>
                             <span class="text-gray-600"><?= $like_count['likes_count'] ?> J'aime</span>
                         </div>
@@ -110,9 +105,9 @@ try {
 
     <!-- Footer -->
     <!-- <footer class="bg-gray-800 text-white mt-12"> -->
-        <!-- <div class="max-w-7xl mx-auto px-6 py-4 text-center"> -->
-            <!-- <p>&copy; 2024 Instagram Clone. Tous droits réservés.</p> -->
-        <!-- </div> -->
+    <!-- <div class="max-w-7xl mx-auto px-6 py-4 text-center"> -->
+    <!-- <p>&copy; 2024 Instagram Clone. Tous droits réservés.</p> -->
+    <!-- </div> -->
     <!-- </footer> -->
 
 </body>

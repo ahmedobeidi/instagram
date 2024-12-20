@@ -1,6 +1,8 @@
 <?php
-// $_SESSION["userexist"] = false;
+
 session_start();
-unset($_SESSION['user']);
-header('location: ../frontend/pages/connexion.php');
-?>
+
+unset($_SESSION["user"]);
+unset($_SESSION["user_id"]);
+
+header("Location: ../frontend/pages/connexion.php");
