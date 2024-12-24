@@ -26,7 +26,7 @@ try {
     $photo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $error) {
     echo $error->getMessage();
-    exit;
+   
 }
 
 
