@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             $sql = "SELECT * FROM user WHERE username = :username";
             $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+            $stmt->bindParam(':username', $username, PDO::PARAM_STR);
             $stmt->execute();
 
             if ($stmt->rowCount() > 0) {
